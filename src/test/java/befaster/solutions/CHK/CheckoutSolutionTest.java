@@ -7,8 +7,26 @@ import static org.junit.Assert.*;
 public class CheckoutSolutionTest {
 
     @Test
-    public void checkout() {
+    public void AAATest() {
         int sum = new CheckoutSolution().checkout("AAA");
         assertEquals(130, sum);
+    }
+
+    @Test
+    public void BBTest() {
+        int sum = new CheckoutSolution().checkout("BB");
+        assertEquals(45, sum);
+    }
+
+
+    @Test
+    public void ABCDTest() {
+        int sum = new CheckoutSolution().checkout("ABCD");
+        assertEquals(115, sum);
+    }
+    @Test
+    public void AAAABCDTest() {
+        int sum = new CheckoutSolution().checkout("AAAABCD");
+        assertEquals(245, sum);
     }
 }
