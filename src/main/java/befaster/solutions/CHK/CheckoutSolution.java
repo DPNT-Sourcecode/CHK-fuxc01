@@ -3,6 +3,8 @@ package befaster.solutions.CHK;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.util.Arrays.asList;
+
 public class CheckoutSolution {
     public Integer checkout(String skus) {
         if (skus == null) {
@@ -54,12 +56,9 @@ public class CheckoutSolution {
     }
 
     private int discountA(Map<Character, Integer> counter) {
-        int discount = 0;
-        if (counter.containsKey('A')) {
-            discount += (counter.get('A') / 5) * 50;
-            discount += ((counter.get('A') % 5) / 3) * 20;
-        }
-        return discount;
+        BundleDiscounter discounter = new BundleDiscounter('A', asList(5, 3), asList(50, 20));
+        return discounter.getDiscount(counter);
     }
 
 }
+
