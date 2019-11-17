@@ -25,25 +25,37 @@ public class CheckoutSolution {
             }
         }
 
-        // discount for E & B
-        if (counter.containsKey('B')) {
-            int freeBs = counter.getOrDefault('E', 0) / 2;
-            counter.put('B', Math.max(0, counter.get('B') - freeBs));
-        }
+        discountE(counter);
 
         int sum = counter.entrySet().stream()
                 .mapToInt(e -> priceMap.get(e.getKey()) * e.getValue())
                 .sum();
 
-        // discount for A
-        if (counter.containsKey('A')) {
-            sum -= (counter.get('A') / 5) * 50;
-            sum -= ((counter.get('A') % 5) / 3) * 20;
-        }
-
-            //discount for B
-        sum -= (counter.getOrDefault('B', 0) / 2) * 15;
+        sum -= discountA(counter);
+        sum -= discountB(counter);
         return sum;
     }
+
+    private int discountB(Map<Character, Integer> counter) {
+        return (counter.getOrDefault('B', 0) / 2) * 15;
+    }
+
+    private void discountE(Map<Character, Integer> counter) {
+        if (counter.containsKey('B')) {
+            int freeBs = counter.getOrDefault('E', 0) / 2;
+            counter.put('B', Math.max(0, counter.get('B') - freeBs));
+        }
+    }
+
+    private int discountA(Map<Character, Integer> counter) {
+        int discount = 0;
+        if (counter.containsKey('A')) {
+            discount += (counter.get('A') / 5) * 50;
+            discount += ((counter.get('A') % 5) / 3) * 20;
+        }
+        return discount;
+    }
+
 }
+
 
