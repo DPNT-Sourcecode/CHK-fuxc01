@@ -28,7 +28,7 @@ public class CheckoutSolution {
         priceMap.put('N', 40);
         Map<Character, Integer> counter = new HashMap<>();
 
-        Map<Character, PriceDiscounter> discounterMap = initDiscounterMap();
+        Map<Character, PriceDiscounter> priceDiscounters = initDiscounterMap();
 
         for (int i = 0; i < skus.length(); i++) {
             Character sku = skus.charAt(i);
@@ -39,14 +39,14 @@ public class CheckoutSolution {
             }
         }
 
-        discountE(counter);
+        applyQuantityDiscounters(counter);
 
         int sum = counter.entrySet().stream()
                 .mapToInt(e -> priceMap.get(e.getKey()) * e.getValue())
                 .sum();
 
         // apply all discounts
-        sum -= discounterMap.values().stream()
+        sum -= priceDiscounters.values().stream()
                 .mapToInt(e -> e.getDiscount(counter))
                 .sum();
 
@@ -58,15 +58,15 @@ public class CheckoutSolution {
         discounterMap.put('A', new PriceDiscounter('A', asList(5, 3), asList(50, 20)));
         discounterMap.put('B', new PriceDiscounter('B', asList(2), asList(15)));
         discounterMap.put('F', new PriceDiscounter('F', asList(3), asList(10)));
-        discounterMap.put('H', new PriceDiscounter('F', asList(10, 5), asList(20, 5)));
-        discounterMap.put('K', new PriceDiscounter('F', asList(2), asList(10)));
+        discounterMap.put('H', new PriceDiscounter('H', asList(10, 5), asList(20, 5)));
+        discounterMap.put('K', new PriceDiscounter('K', asList(2), asList(10)));
         return discounterMap;
     }
 
-    private void discountE(Map<Character, Integer> counter) {
-        QuantityDiscounter discounter = new QuantityDiscounter('E', 'B', 2);
-        discounter.computeUpdatedCounter(counter);
+    private void applyQuantityDiscounters(Map<Character, Integer> counter) {
+        new QuantityDiscounter('E', 'B', 2).computeUpdatedCounter(counter);
     }
 }
+
 
 
