@@ -28,7 +28,7 @@ public class CheckoutSolution {
         priceMap.put('N', 40);
         Map<Character, Integer> counter = new HashMap<>();
 
-        Map<Character, Discounter> discounterMap = initDiscounterMap();
+        Map<Character, PriceDiscounter> discounterMap = initDiscounterMap();
 
         for (int i = 0; i < skus.length(); i++) {
             Character sku = skus.charAt(i);
@@ -53,21 +53,20 @@ public class CheckoutSolution {
         return sum;
     }
 
-    private Map<Character, Discounter> initDiscounterMap() {
-        Map<Character, Discounter> discounterMap = new HashMap<>();
-        discounterMap.put('A', new BundleDiscounter('A', asList(5, 3), asList(50, 20)));
-        discounterMap.put('B', new BundleDiscounter('B', asList(2), asList(15)));
-        discounterMap.put('F', new BundleDiscounter('F', asList(3), asList(10)));
-        discounterMap.put('H', new BundleDiscounter('F', asList(10, 5), asList(20, 5)));
-        discounterMap.put('K', new BundleDiscounter('F', asList(2), asList(10)));
+    private Map<Character, PriceDiscounter> initDiscounterMap() {
+        Map<Character, PriceDiscounter> discounterMap = new HashMap<>();
+        discounterMap.put('A', new PriceDiscounter('A', asList(5, 3), asList(50, 20)));
+        discounterMap.put('B', new PriceDiscounter('B', asList(2), asList(15)));
+        discounterMap.put('F', new PriceDiscounter('F', asList(3), asList(10)));
+        discounterMap.put('H', new PriceDiscounter('F', asList(10, 5), asList(20, 5)));
+        discounterMap.put('K', new PriceDiscounter('F', asList(2), asList(10)));
         return discounterMap;
     }
 
     private void discountE(Map<Character, Integer> counter) {
-        if (counter.containsKey('B')) {
-            int freeBs = counter.getOrDefault('E', 0) / 2;
-            counter.put('B', Math.max(0, counter.get('B') - freeBs));
-        }
+        QuantityDiscounter discounter = new QuantityDiscounter('E', 'B', 2);
+        discounter.computeUpdatedCounter(counter);
     }
 }
+
 
