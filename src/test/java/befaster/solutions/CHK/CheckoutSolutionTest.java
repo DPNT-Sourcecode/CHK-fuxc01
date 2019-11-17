@@ -101,6 +101,28 @@ public class CheckoutSolutionTest {
 
     @Test
     public void KTest() {
-        asser
+        assertEquals(150, (int) solution.checkout("KK"));
     }
+
+    @Test
+    public void NTest() {
+        assertEquals(120, (int) solution.checkout("NNNM"));
+    }
+
+    @Test
+    public void PTest() {
+        assertEquals(200, (int) solution.checkout("PPPPP"));
+    }
+
+    @Test
+    public void QTest() {
+        assertEquals(80, (int) solution.checkout("QQQ"));
+    }
+
+    @Test
+    public void RTest() {
+        assertEquals(150, (int) solution.checkout("RRRQ"));
+    }
+
+    @Tes
 }
