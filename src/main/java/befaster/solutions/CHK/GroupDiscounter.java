@@ -8,11 +8,13 @@ import java.util.stream.Collectors;
 public class GroupDiscounter {
 
     private final List<Character> items;
-    private int quantity;
-    private int price;
+    private final int quantity;
+    private final int bundlePrice;
 
-    public GroupDiscounter(List<Character> items) {
+    public GroupDiscounter(List<Character> items, int quantity, int bundlePrice) {
         this.items = items;
+        this.quantity = quantity;
+        this.bundlePrice = bundlePrice;
     }
 
     public int getTotalPrice(Map<Character, Integer> counter, Map<Character, Integer> priceMap) {
@@ -20,12 +22,16 @@ public class GroupDiscounter {
                 .sorted(Comparator.comparingInt(priceMap::get).reversed())
                 .collect(Collectors.toList());
         int residualItems = 0;
-        int regularPriceSum = 0;
         int total = 0;
         for (Character item: sortedItems) {
-            total += (counter.getOrDefault(item, 0) / quantity) *
+            int numItems = residualItems + counter.getOrDefault(item, 0);
+            total += (numItems / quantity) * bundlePrice;
+            residualItems = numItems % quantity;
+        }
+        int regularPrices = 0;
+        for (int i = sortedItems.size()-1; i >= 0; i++) {
+            if 
         }
         return total;
     }
 }
-
