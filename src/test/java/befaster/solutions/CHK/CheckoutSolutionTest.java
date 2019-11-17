@@ -101,7 +101,7 @@ public class CheckoutSolutionTest {
 
     @Test
     public void KTest() {
-        assertEquals(150, (int) solution.checkout("KK"));
+        assertEquals(120, (int) solution.checkout("KK"));
     }
 
     @Test

@@ -22,7 +22,7 @@ public class CheckoutSolution {
         priceMap.put('H', 10);
         priceMap.put('I', 35);
         priceMap.put('J', 60);
-        priceMap.put('K', 80);
+        priceMap.put('K', 70);
         priceMap.put('L', 90);
         priceMap.put('M', 15);
         priceMap.put('N', 40);
@@ -76,7 +76,7 @@ public class CheckoutSolution {
         discounterMap.put('B', new PriceDiscounter('B', asList(2), asList(15)));
         discounterMap.put('F', new PriceDiscounter('F', asList(3), asList(10)));
         discounterMap.put('H', new PriceDiscounter('H', asList(10, 5), asList(20, 5)));
-        discounterMap.put('K', new PriceDiscounter('K', asList(2), asList(10)));
+        discounterMap.put('K', new PriceDiscounter('K', asList(2), asList(20)));
         discounterMap.put('P', new PriceDiscounter('P', asList(5), asList(50)));
         discounterMap.put('Q', new PriceDiscounter('Q', asList(3), asList(10)));
         discounterMap.put('U', new PriceDiscounter('U', asList(4), asList(40)));
@@ -92,4 +92,5 @@ public class CheckoutSolution {
                 .forEach(d -> d.computeUpdatedCounter(counter));
     }
 }
+
 
