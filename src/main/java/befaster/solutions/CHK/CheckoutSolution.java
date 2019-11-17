@@ -87,7 +87,3 @@ public class CheckoutSolution {
                 .forEach(d -> d.computeUpdatedCounter(counter));
     }
 }
-
-
-
-
