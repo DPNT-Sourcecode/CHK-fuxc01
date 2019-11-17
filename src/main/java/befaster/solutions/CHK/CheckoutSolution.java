@@ -52,12 +52,17 @@ public class CheckoutSolution {
         }
 
         applyQuantityDiscounters(counter);
+        GroupDiscounter groupDiscounter = new GroupDiscounter(asList('S', 'T', 'X', 'Y', 'Z'), 3, 45);
 
         int sum = counter.entrySet().stream()
+                .filter(p -> !groupDiscounter.isInGroup(p.getKey()))
                 .mapToInt(e -> priceMap.get(e.getKey()) * e.getValue())
                 .sum();
 
-        // apply all discounts
+        // run group discounter
+        sum += groupDiscounter.getTotalPrice(priceMap, counter);
+
+        // apply all other discounts
         sum -= priceDiscounters.values().stream()
                 .mapToInt(e -> e.getDiscount(counter))
                 .sum();

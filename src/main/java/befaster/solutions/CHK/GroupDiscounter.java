@@ -1,18 +1,16 @@
 package befaster.solutions.CHK;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GroupDiscounter {
 
-    private final List<Character> items;
+    private final Set<Character> items;
     private final int quantity;
     private final int bundlePrice;
 
     public GroupDiscounter(List<Character> items, int quantity, int bundlePrice) {
-        this.items = items;
+        this.items = new HashSet<>(items);
         this.quantity = quantity;
         this.bundlePrice = bundlePrice;
     }
@@ -23,15 +21,26 @@ public class GroupDiscounter {
                 .collect(Collectors.toList());
         int residualItems = 0;
         int total = 0;
-        for (Character item: sortedItems) {
+        for (Character item : sortedItems) {
             int numItems = residualItems + counter.getOrDefault(item, 0);
             total += (numItems / quantity) * bundlePrice;
             residualItems = numItems % quantity;
         }
+
         int regularPrices = 0;
-        for (int i = sortedItems.size()-1; i >= 0; i++) {
-            if 
+        for (int i = sortedItems.size() - 1; i >= 0; i++) {
+            Character product = sortedItems.get(i);
+            int productCount = counter.getOrDefault(product, 0);
+            regularPrices += priceMap.get(product) * Math.min(residualItems, productCount);
+            residualItems -= productCount;
+            if (residualItems <= 0) {
+                break;
+            }
         }
-        return total;
+        return total + regularPrices;
+    }
+
+    public boolean isInGroup(Character product) {
+        return items.contains(product);
     }
 }

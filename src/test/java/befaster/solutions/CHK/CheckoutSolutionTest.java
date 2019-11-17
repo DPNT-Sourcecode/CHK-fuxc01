@@ -135,4 +135,9 @@ public class CheckoutSolutionTest {
         assertEquals(130, (int) solution.checkout("VVV"));
     }
 
+    @Test
+    public void groupTest() {
+
+    }
+
 }
