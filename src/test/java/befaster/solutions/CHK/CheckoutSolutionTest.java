@@ -62,4 +62,9 @@ public class CheckoutSolutionTest {
         int sum = solution.checkout("EEB");
         assertEquals(80, sum);
     }
+    @Test
+    public void EEBBTest() {
+        int sum = solution.checkout("EEBB");
+        assertEquals(110, sum);
+    }
 }
