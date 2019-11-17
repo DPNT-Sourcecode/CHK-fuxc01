@@ -22,6 +22,10 @@ public class CheckoutSolution {
         priceMap.put('I', 35);
         priceMap.put('J', 60);
         priceMap.put('K', 80);
+        priceMap.put('L', 90);
+        priceMap.put('M', 15);
+        priceMap.put('N', 40);
+        priceMap.put('N', 40);
         Map<Character, Integer> counter = new HashMap<>();
 
         Map<Character, Discounter> discounterMap = initDiscounterMap();
@@ -66,3 +70,4 @@ public class CheckoutSolution {
         }
     }
 }
+
