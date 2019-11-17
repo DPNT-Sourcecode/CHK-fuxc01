@@ -29,4 +29,15 @@ public class CheckoutSolutionTest {
         int sum = new CheckoutSolution().checkout("AAAABCD");
         assertEquals(245, sum);
     }
+
+    @Test
+    public void emptyTest() {
+        int sum = new CheckoutSolution().checkout("");
+        assertEquals(0, sum);
+    }
+    @Test
+    public void nullTest() {
+        int sum = new CheckoutSolution().checkout(null);
+        assertEquals(0, sum);
+    }
 }

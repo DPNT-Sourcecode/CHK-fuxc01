@@ -5,6 +5,9 @@ import java.util.Map;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
+        if (skus == null) {
+            return 0;
+        }
         Map<Character, Integer> priceMap = new HashMap<>();
         priceMap.put('A', 50);
         priceMap.put('B', 30);
