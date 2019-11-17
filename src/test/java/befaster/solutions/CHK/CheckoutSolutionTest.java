@@ -124,5 +124,15 @@ public class CheckoutSolutionTest {
         assertEquals(150, (int) solution.checkout("RRRQ"));
     }
 
-    @Tes
+    @Test
+    public void UTest() {
+        assertEquals(120, (int) solution.checkout("UUUU"));
+    }
+
+    @Test
+    public void VTest() {
+        assertEquals(90, (int) solution.checkout("VV"));
+        assertEquals(130, (int) solution.checkout("VVV"));
+    }
+
 }

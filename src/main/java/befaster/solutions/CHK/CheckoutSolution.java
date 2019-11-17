@@ -75,7 +75,7 @@ public class CheckoutSolution {
         discounterMap.put('P', new PriceDiscounter('P', asList(5), asList(50)));
         discounterMap.put('Q', new PriceDiscounter('Q', asList(3), asList(10)));
         discounterMap.put('U', new PriceDiscounter('U', asList(4), asList(40)));
-        discounterMap.put('V', new PriceDiscounter('U', asList(3, 2), asList(20, 10)));
+        discounterMap.put('V', new PriceDiscounter('V', asList(3, 2), asList(20, 10)));
         return discounterMap;
     }
 
