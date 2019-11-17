@@ -13,6 +13,7 @@ public class CheckoutSolution {
         priceMap.put('B', 30);
         priceMap.put('C', 20);
         priceMap.put('D', 15);
+        priceMap.put('E', 40);
         Map<Character, Integer> counter = new HashMap<>();
 
         int sum = 0;
@@ -29,8 +30,13 @@ public class CheckoutSolution {
         // discount for A
         sum -= (counter.getOrDefault('A', 0) / 3) * 20;
 
-        //discount for B
-        sum -= (counter.getOrDefault('B', 0) / 2) * 15;
+        // discount for E & B
+        if (counter.containsKey('B')) {
+            int freeBs = counter.getOrDefault('E', 0) / 2;
+            counter.put('B', Math.min(0, counter.get('B') - freeBs));
+            //discount for B
+            sum -= (counter.getOrDefault('B', 0) / 2) * 15;
+        }
 
         return sum;
     }

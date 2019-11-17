@@ -1,51 +1,65 @@
 package befaster.solutions.CHK;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class CheckoutSolutionTest {
 
+    private CheckoutSolution solution;
+
+    @Before
+    public void setUp() {
+        solution = new CheckoutSolution();
+    }
+
     @Test
     public void AAATest() {
-        int sum = new CheckoutSolution().checkout("AAA");
+        int sum = solution.checkout("AAA");
         assertEquals(130, sum);
     }
 
     @Test
     public void BBTest() {
-        int sum = new CheckoutSolution().checkout("BB");
+        int sum = solution.checkout("BB");
         assertEquals(45, sum);
     }
 
 
     @Test
     public void ABCDTest() {
-        int sum = new CheckoutSolution().checkout("ABCD");
+        int sum = solution.checkout("ABCD");
         assertEquals(115, sum);
     }
     @Test
     public void AAAABCDTest() {
-        int sum = new CheckoutSolution().checkout("AAAABCD");
+        int sum = solution.checkout("AAAABCD");
         assertEquals(245, sum);
     }
 
     @Test
     public void emptyTest() {
-        int sum = new CheckoutSolution().checkout("");
+        int sum = solution.checkout("");
         assertEquals(0, sum);
     }
     @Test
     public void nullTest() {
-        int sum = new CheckoutSolution().checkout(null);
+        int sum = solution.checkout(null);
         assertEquals(0, sum);
     }
 
     @Test
     public void invalidTest() {
-        int sum = new CheckoutSolution().checkout("a");
+        int sum = solution.checkout("a");
         assertEquals(-1, sum);
-        sum = new CheckoutSolution().checkout("-");
+        sum = solution.checkout("-");
         assertEquals(-1, sum);
+    }
+
+    @Test
+    public void buy2ETest() {
+        int sum = solution.checkout("EEB");
+        assertEquals(80, sum);
     }
 }
