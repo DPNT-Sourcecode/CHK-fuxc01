@@ -36,7 +36,10 @@ public class CheckoutSolution {
                 .sum();
 
         // discount for A
-        sum -= (counter.getOrDefault('A', 0) / 3) * 20;
+        if (counter.containsKey('A')) {
+            sum -= (counter.get('A') / 5) * 50;
+            sum -= ((counter.get('A') % 5) / 3) * 20;
+        }
 
             //discount for B
         sum -= (counter.getOrDefault('B', 0) / 2) * 15;

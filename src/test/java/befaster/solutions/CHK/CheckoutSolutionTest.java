@@ -67,4 +67,16 @@ public class CheckoutSolutionTest {
         int sum = solution.checkout("EEBB");
         assertEquals(110, sum);
     }
+
+    @Test
+    public void A5Test() {
+        int sum = solution.checkout("AAAAA");
+        assertEquals(200, sum);
+        sum = solution.checkout("AAAAAA");
+        assertEquals(250, sum);
+        sum = solution.checkout("AAAAAAA");
+        assertEquals(300, sum);
+        sum = solution.checkout("AAAAAAAA");
+        assertEquals(330, sum);
+    }
 }
