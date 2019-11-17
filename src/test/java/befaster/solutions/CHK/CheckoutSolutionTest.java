@@ -92,4 +92,15 @@ public class CheckoutSolutionTest {
         sum = solution.checkout("FFFF");
         assertEquals(30, sum);
     }
+
+    @Test
+    public void HTest() {
+        assertEquals(45, (int) solution.checkout("HHHHH"));
+        assertEquals(80, (int) solution.checkout("HHHHHHHHHH"));
+    }
+
+    @Test
+    public void KTest() {
+        asser
+    }
 }
