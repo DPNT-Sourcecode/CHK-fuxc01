@@ -17,6 +17,7 @@ public class GroupDiscounter {
 
     public int getTotalPrice(Map<Character, Integer> counter, Map<Character, Integer> priceMap) {
         List<Character> sortedItems = items.stream()
+                .filter(priceMap::containsKey)
                 .sorted(Comparator.comparingInt(priceMap::get).reversed())
                 .collect(Collectors.toList());
         int residualItems = 0;

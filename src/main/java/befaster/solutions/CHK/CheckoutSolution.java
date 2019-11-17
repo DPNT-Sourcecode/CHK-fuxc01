@@ -60,7 +60,7 @@ public class CheckoutSolution {
                 .sum();
 
         // run group discounter
-        sum += groupDiscounter.getTotalPrice(priceMap, counter);
+        sum += groupDiscounter.getTotalPrice(counter, priceMap);
 
         // apply all other discounts
         sum -= priceDiscounters.values().stream()
