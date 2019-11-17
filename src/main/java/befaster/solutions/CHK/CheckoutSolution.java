@@ -30,14 +30,14 @@ public class CheckoutSolution {
         priceMap.put('P', 50);
         priceMap.put('Q', 30);
         priceMap.put('R', 50);
-        priceMap.put('S', 30);
+        priceMap.put('S', 20);
         priceMap.put('T', 20);
         priceMap.put('U', 40);
         priceMap.put('V', 50);
         priceMap.put('W', 20);
-        priceMap.put('X', 90);
-        priceMap.put('Y', 10);
-        priceMap.put('Z', 50);
+        priceMap.put('X', 17);
+        priceMap.put('Y', 20);
+        priceMap.put('Z', 21);
         Map<Character, Integer> counter = new HashMap<>();
 
         Map<Character, PriceDiscounter> priceDiscounters = initDiscounterMap();
@@ -92,3 +92,4 @@ public class CheckoutSolution {
                 .forEach(d -> d.computeUpdatedCounter(counter));
     }
 }
+
