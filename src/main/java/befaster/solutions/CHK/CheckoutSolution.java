@@ -2,6 +2,7 @@ package befaster.solutions.CHK;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 
@@ -25,7 +26,18 @@ public class CheckoutSolution {
         priceMap.put('L', 90);
         priceMap.put('M', 15);
         priceMap.put('N', 40);
-        priceMap.put('N', 40);
+        priceMap.put('O', 10);
+        priceMap.put('P', 50);
+        priceMap.put('Q', 30);
+        priceMap.put('R', 50);
+        priceMap.put('S', 30);
+        priceMap.put('T', 20);
+        priceMap.put('U', 40);
+        priceMap.put('V', 50);
+        priceMap.put('W', 20);
+        priceMap.put('X', 90);
+        priceMap.put('Y', 10);
+        priceMap.put('Z', 50);
         Map<Character, Integer> counter = new HashMap<>();
 
         Map<Character, PriceDiscounter> priceDiscounters = initDiscounterMap();
@@ -60,13 +72,22 @@ public class CheckoutSolution {
         discounterMap.put('F', new PriceDiscounter('F', asList(3), asList(10)));
         discounterMap.put('H', new PriceDiscounter('H', asList(10, 5), asList(20, 5)));
         discounterMap.put('K', new PriceDiscounter('K', asList(2), asList(10)));
+        discounterMap.put('P', new PriceDiscounter('P', asList(5), asList(50)));
+        discounterMap.put('Q', new PriceDiscounter('Q', asList(3), asList(10)));
+        discounterMap.put('U', new PriceDiscounter('U', asList(4), asList(40)));
+        discounterMap.put('V', new PriceDiscounter('U', asList(3, 2), asList(20, 10)));
         return discounterMap;
     }
 
     private void applyQuantityDiscounters(Map<Character, Integer> counter) {
-        new QuantityDiscounter('E', 'B', 2).computeUpdatedCounter(counter);
+        Stream.of(
+                new QuantityDiscounter('E', 'B', 2),
+                new QuantityDiscounter('N', 'M', 3),
+                new QuantityDiscounter('R', 'Q', 3))
+                .forEach(d -> d.computeUpdatedCounter(counter));
     }
 }
+
 
 
 
