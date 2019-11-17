@@ -22,7 +22,7 @@ public class BundleDiscounter implements Discounter {
         if (counter.containsKey(product)) {
             int quantity = counter.get(product);
             for (DiscountSteps step: discountSteps) {
-                discount += (quantity / step.quantity) * discount;
+                discount += (quantity / step.quantity) * step.discount;
                 quantity %= step.quantity;
             }
         }
@@ -40,4 +40,5 @@ public class BundleDiscounter implements Discounter {
     }
 
 }
+
 

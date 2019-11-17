@@ -45,7 +45,8 @@ public class CheckoutSolution {
     }
 
     private int discountF(Map<Character, Integer> counter) {
-        return (counter.getOrDefault('F', 0) / 3) * 10;
+        BundleDiscounter discounter = new BundleDiscounter('F', asList(3), asList(10));
+        return discounter.getDiscount(counter);
     }
 
     private void discountE(Map<Character, Integer> counter) {
@@ -61,4 +62,5 @@ public class CheckoutSolution {
     }
 
 }
+
 
