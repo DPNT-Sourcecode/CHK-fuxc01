@@ -33,7 +33,7 @@ public class CheckoutSolution {
         // discount for E & B
         if (counter.containsKey('B')) {
             int freeBs = counter.getOrDefault('E', 0) / 2;
-            counter.put('B', Math.min(0, counter.get('B') - freeBs));
+            counter.put('B', Math.max(0, counter.get('B') - freeBs));
             //discount for B
             sum -= (counter.getOrDefault('B', 0) / 2) * 15;
         }
@@ -41,3 +41,4 @@ public class CheckoutSolution {
         return sum;
     }
 }
+
