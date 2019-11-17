@@ -79,4 +79,10 @@ public class CheckoutSolutionTest {
         sum = solution.checkout("AAAAAAAA");
         assertEquals(330, sum);
     }
+
+    @Test
+    public void FFFTest(){
+        int sum = solution.checkout("FFF");
+        assertEquals(20, sum);
+    }
 }

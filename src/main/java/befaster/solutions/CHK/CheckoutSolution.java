@@ -14,6 +14,7 @@ public class CheckoutSolution {
         priceMap.put('C', 20);
         priceMap.put('D', 15);
         priceMap.put('E', 40);
+        priceMap.put('F', 10);
         Map<Character, Integer> counter = new HashMap<>();
 
         for (int i = 0; i < skus.length(); i++) {
@@ -33,11 +34,16 @@ public class CheckoutSolution {
 
         sum -= discountA(counter);
         sum -= discountB(counter);
+        sum -= discountF(counter);
         return sum;
     }
 
     private int discountB(Map<Character, Integer> counter) {
         return (counter.getOrDefault('B', 0) / 2) * 15;
+    }
+
+    private int discountF(Map<Character, Integer> counter) {
+        return (counter.getOrDefault('F', 0) / 3) * 10;
     }
 
     private void discountE(Map<Character, Integer> counter) {
