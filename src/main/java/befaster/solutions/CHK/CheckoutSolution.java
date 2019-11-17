@@ -21,6 +21,8 @@ public class CheckoutSolution {
             if (priceMap.containsKey(sku)) {
                 counter.put(sku, counter.getOrDefault(sku, 0) + 1);
                 sum += priceMap.get(sku);
+            } else {
+                return -1;
             }
         }
 

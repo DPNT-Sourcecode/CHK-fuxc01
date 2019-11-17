@@ -40,4 +40,12 @@ public class CheckoutSolutionTest {
         int sum = new CheckoutSolution().checkout(null);
         assertEquals(0, sum);
     }
+
+    @Test
+    public void invalidTest() {
+        int sum = new CheckoutSolution().checkout("a");
+        assertEquals(-1, sum);
+        sum = new CheckoutSolution().checkout("-");
+        assertEquals(-1, sum);
+    }
 }
