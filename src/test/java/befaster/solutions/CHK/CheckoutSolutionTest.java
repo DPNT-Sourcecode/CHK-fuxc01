@@ -138,7 +138,8 @@ public class CheckoutSolutionTest {
     @Test
     public void groupTest() {
         assertEquals(45, (int) solution.checkout("XYZ"));
-        assertEquals(85, (int) solution.checkout("XYZST"));
+        assertEquals(82, (int) solution.checkout("XYZST"));
+        assertEquals(90, (int) solution.checkout("XXYZST"));
     }
 
 }
