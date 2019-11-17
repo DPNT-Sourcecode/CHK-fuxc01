@@ -29,7 +29,7 @@ public class GroupDiscounter {
         }
 
         int regularPrices = 0;
-        for (int i = sortedItems.size() - 1; i >= 0; i++) {
+        for (int i = sortedItems.size() - 1; i >= 0; i--) {
             Character product = sortedItems.get(i);
             int productCount = counter.getOrDefault(product, 0);
             regularPrices += priceMap.get(product) * Math.min(residualItems, productCount);
