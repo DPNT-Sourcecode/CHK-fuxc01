@@ -32,6 +32,7 @@ public class CheckoutSolutionTest {
         int sum = solution.checkout("ABCD");
         assertEquals(115, sum);
     }
+
     @Test
     public void AAAABCDTest() {
         int sum = solution.checkout("AAAABCD");
@@ -43,6 +44,7 @@ public class CheckoutSolutionTest {
         int sum = solution.checkout("");
         assertEquals(0, sum);
     }
+
     @Test
     public void nullTest() {
         int sum = solution.checkout(null);
@@ -62,6 +64,7 @@ public class CheckoutSolutionTest {
         int sum = solution.checkout("EEB");
         assertEquals(80, sum);
     }
+
     @Test
     public void EEBBTest() {
         int sum = solution.checkout("EEBB");
@@ -81,8 +84,12 @@ public class CheckoutSolutionTest {
     }
 
     @Test
-    public void FFFTest(){
+    public void FFFTest() {
         int sum = solution.checkout("FFF");
         assertEquals(20, sum);
+        sum = solution.checkout("FF");
+        assertEquals(20, sum);
+        sum = solution.checkout("FFFF");
+        assertEquals(30, sum);
     }
 }
